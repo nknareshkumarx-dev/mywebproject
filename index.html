@@ -1,62 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sister Love Quiz</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Web Project</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --bg1: #ff9a9e;
+            --bg2: #fad0c4;
+            --accent: #6a11cb;
+            --accent2: #2575fc;
+            --glass: rgba(255,255,255,0.12);
+        }
+        html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;}
+        body{
+            background: linear-gradient(135deg,var(--bg1),var(--bg2));
+            display:flex;align-items:center;justify-content:center;padding:24px;
+            -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+        }
+        .card{width:100%;max-width:980px;background:linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06));border-radius:18px;padding:48px;box-shadow:0 10px 30px rgba(20,20,40,0.12);backdrop-filter: blur(8px);}
+        .header{display:flex;align-items:center;gap:16px}
+        .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:26px}
+        h1{margin:0;font-size:clamp(28px,5vw,44px);line-height:1.02;color:#0f172a}
+        p.lead{margin:12px 0 20px;color:#071024;opacity:0.88;font-size:16px}
+        .actions{display:flex;gap:12px;margin-top:18px}
+        .btn{border:0;padding:12px 18px;border-radius:12px;font-weight:600;cursor:pointer}
+        .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:white}
+        .btn-ghost{background:transparent;border:1px solid rgba(10,10,30,0.06)}
+        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:28px}
+        .feature{background:rgba(255,255,255,0.06);padding:14px;border-radius:12px;display:flex;align-items:center;gap:12px}
+        .emoji{font-size:24px}
+        footer{margin-top:20px;text-align:center;color:#071024;opacity:0.7;font-size:14px}
+        @media (prefers-color-scheme:dark){
+            body{background:linear-gradient(135deg,#0f0c29,#302b63);} 
+            .card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));color:#e6eef8}
+            h1, p.lead, footer{color:#e6eef8}
+        }
+    </style>
 </head>
 <body>
-  <main class="card">
-    <div class="header">
-      <div class="logo">💖</div>
-      <div>
-        <h1>Naresh's Sister Love Quiz</h1>
-        <p class="lead">Naresh, answer three sweet questions and tell your sister how much she means to you.</p>
-      </div>
-    </div>
+    <main class="card" role="main">
+        <div class="header">
+            <div class="logo">✨</div>
+            <div>
+                <h1>Welcome to My Web Project — Fresh & Trendy ✨💫</h1>
+                <p class="lead">A simple, modern landing front page using trending gradients and fun emojis. Crafted for quick edits and responsive display.</p>
+            </div>
+        </div>
 
-    <form id="sisterQuiz" class="quiz-form">
-      <ol>
-        <li>
-          <label>Tell your secret message:</label>
-          <input id="secretText" name="q1" type="text" placeholder="Type your special word" required />
-        </li>
-        <li>
-          <label>What is my nickname?</label>
-          <div>
-            <label><input type="radio" name="q2" value="5" required>narii</label>
-            <label><input type="radio" name="q2" value="4">your choice</label>
-            <label><input type="radio" name="q2" value="2">best brother</label>
-            <label><input type="radio" name="q2" value="0">no nickname</label>
-          </div>
-        </li>
-        <li>
-          <label>How much do you like your brother?</label>
-          <div>
-            <label><input type="radio" name="q3" value="5">A lot</label>
-            <label><input type="radio" name="q3" value="4">Very much</label>
-            <label><input type="radio" name="q3" value="2">Sometimes</label>
-            <label><input type="radio" name="q3" value="0">Not much</label>
-          </div>
-        </li>
-      </ol>
+        <div class="actions">
+            <button class="btn btn-primary">Get Started 🚀</button>
+            <button class="btn btn-ghost">Learn More 📚</button>
+        </div>
 
-      <div class="quiz-actions">
-        <button type="submit" class="btn btn-primary">See My Percentage</button>
-        <button type="button" id="quizReset" class="btn btn-ghost">Reset</button>
-      </div>
-    </form>
+        <div class="grid">
+            <div class="feature"><div class="emoji">🎨</div><div><strong>Vibrant Gradients</strong><div style="font-size:13px;opacity:0.85">Soft, modern color transitions</div></div></div>
+            <div class="feature"><div class="emoji">⚡</div><div><strong>Fast & Lightweight</strong><div style="font-size:13px;opacity:0.85">Minimal CSS, great performance</div></div></div>
+            <div class="feature"><div class="emoji">📱</div><div><strong>Responsive</strong><div style="font-size:13px;opacity:0.85">Looks great on all screens</div></div></div>
+            <div class="feature"><div class="emoji">😄</div><div><strong>Fun Emojis</strong><div style="font-size:13px;opacity:0.85">Use them to express your brand</div></div></div>
+        </div>
 
-    <div id="quizResult" class="quiz-result" aria-live="polite" style="display:none; margin-top:20px; padding:16px; border-radius:12px; background:var(--bg2);">
-      <h2 id="resultPercent"></h2>
-      <p id="resultText"></p>
-    </div>
+        <footer>Made with ❤️ · Try editing this file to customize colors and emojis</footer>
+    </main>
 
-    <footer style="margin-top:20px">Share the quiz with your sister and compare results!</footer>
-  </main>
-
-  <script src="script.js"></script>
 </body>
 </html>
