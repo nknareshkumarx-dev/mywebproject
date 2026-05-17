@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sister Love Quiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="card">
+    <div class="header">
+      <div class="logo">💖</div>
+      <div>
+        <h1>Naresh's Sister Love Quiz</h1>
+        <p class="lead">Naresh, answer three sweet questions and tell your sister how much she means to you.</p>
+      </div>
+    </div>
+
+    <form id="sisterQuiz" class="quiz-form">
+      <ol>
+        <li>
+          <label>Tell your secret message:</label>
+          <input id="secretText" name="q1" type="text" placeholder="Type your special word" required />
+        </li>
+        <li>
+          <label>What is my nickname?</label>
+          <div>
+            <label><input type="radio" name="q2" value="5" required>narii</label>
+            <label><input type="radio" name="q2" value="4">your choice</label>
+            <label><input type="radio" name="q2" value="2">best brother</label>
+            <label><input type="radio" name="q2" value="0">no nickname</label>
+          </div>
+        </li>
+        <li>
+          <label>How much do you like your brother?</label>
+          <div>
+            <label><input type="radio" name="q3" value="5">A lot</label>
+            <label><input type="radio" name="q3" value="4">Very much</label>
+            <label><input type="radio" name="q3" value="2">Sometimes</label>
+            <label><input type="radio" name="q3" value="0">Not much</label>
+          </div>
+        </li>
+      </ol>
+
+      <div class="quiz-actions">
+        <button type="submit" class="btn btn-primary">See My Percentage</button>
+        <button type="button" id="quizReset" class="btn btn-ghost">Reset</button>
+      </div>
+    </form>
+
+    <div id="quizResult" class="quiz-result" aria-live="polite" style="display:none; margin-top:20px; padding:16px; border-radius:12px; background:var(--bg2);">
+      <h2 id="resultPercent"></h2>
+      <p id="resultText"></p>
+    </div>
+
+    <footer style="margin-top:20px">Share the quiz with your sister and compare results!</footer>
+  </main>
+
+  <script src="script.js"></ script>
+</body>
+</html>

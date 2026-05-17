@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Codes - Shared Links</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .qr-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .qr-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .qr-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .qr-code {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .qr-code canvas {
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        
+        .page-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .page-link {
+            word-break: break-all;
+            font-size: 0.85em;
+            color: #666;
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-family: monospace;
+        }
+        
+        .copy-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background 0.3s ease;
+        }
+        
+        .copy-btn:hover {
+            background: #764ba2;
+        }
+        
+        .copy-btn.copied {
+            background: #28a745;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            font-size: 0.9em;
+        }
+        
+        .info-box {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid white;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .info-box h2 {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📱 Shared QR Code Links</h1>
+        
+        <div class="info-box">
+            <h2>ℹ️ How to Use</h2>
+            <p>Scan any QR code below with your phone camera to open the page. You can also copy the link to share with others.</p>
+        </div>
+        
+        <div class="qr-grid" id="qrContainer"></div>
+        
+        <div class="footer">
+            <p>✨ Generated with QR Code Generator - All links point to local files</p>
+        </div>
+    </div>
+    
+    <script>
+        const pages = [
+            { name: 'Home', file: 'index.html' },
+            { name: 'Frontpage', file: 'frontpage.html' },
+            { name: 'Naresh', file: 'naresh.html' },
+            { name: 'Sister Love', file: 'sister-love.html' }
+        ];
+        
+        function getFileUrl(filename) {
+            const currentPath = window.location.pathname;
+            const basePath = currentPath.substring(0, currentPath.lastIndexOf('/'));
+            return `file://${window.location.hostname}${basePath}/${filename}`;
+        }
+        
+        function getLocalPath(filename) {
+            // This gets the full local file path
+            const path = window.location.pathname;
+            return path.substring(0, path.lastIndexOf('/')) + '/' + filename;
+        }
+        
+        function copyToClipboard(text, button) {
+            navigator.clipboard.writeText(text).then(() => {
+                button.classList.add('copied');
+                button.textContent = '✓ Copied!';
+                setTimeout(() => {
+                    button.classList.remove('copied');
+                    button.textContent = 'Copy Link';
+                }, 2000);
+            });
+        }
+        
+        function generateQRCards() {
+            const container = document.getElementById('qrContainer');
+            
+            pages.forEach((page, index) => {
+                const fileUrl = getLocalPath(page.file);
+                
+                // Create card
+                const card = document.createElement('div');
+                card.className = 'qr-card';
+                card.innerHTML = `
+                    <div class="page-title">${page.name}</div>
+                    <div class="page-link">${fileUrl}</div>
+                    <div class="qr-code" id="qr-${index}"></div>
+                    <button class="copy-btn" onclick="copyToClipboard('${fileUrl}', this)">Copy Link</button>
+                `;
+                
+                container.appendChild(card);
+                
+                // Generate QR code
+                new QRCode(document.getElementById(`qr-${index}`), {
+                    text: fileUrl,
+                    width: 200,
+                    height: 200,
+                    colorDark: '#667eea',
+                    colorLight: '#ffffff'
+                });
+            });
+        }
+        
+        // Generate QR codes when page loads
+        window.addEventListener('load', generateQRCards);
+    </script>
+</body>
+</html>

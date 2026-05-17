@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Naresh & Sister</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="card" role="main">
+        <div class="header">
+            <div class="logo">❤️</div>
+            <div>
+                <h1>Naresh & Sister — Best Bond</h1>
+                <p class="lead">A special page just for Naresh, celebrating the brother-sister bond with playful messages, theme switching, and warm memories.</p>
+            </div>
+        </div>
+
+        <div class="toolbar">
+            <div class="theme-switcher">
+                <span>Choose mood</span>
+                <button class="theme-btn active" type="button" data-theme="pastel">Pastel</button>
+                <button class="theme-btn" type="button" data-theme="blossom">Blossom</button>
+                <button class="theme-btn" type="button" data-theme="ocean">Ocean</button>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="btn btn-primary" id="showMessage">Show Naresh's Note</button>
+            <button class="btn btn-ghost" id="surpriseButton">Sister's Surprise</button>
+        </div>
+
+        <section class="message-panel">
+            <div class="message-card">
+                <h2>Hello, <span id="heroName">Naresh</span>!</h2>
+                <p id="bondMessage">Naresh and Gayathri share a warm, caring bond full of fun, support, and memories.</p>
+            </div>
+        </section>
+
+        <section class="form-panel">
+            <label for="siblingName">Sister's name:</label>
+            <input id="siblingName" type="text" placeholder="Enter sister's name" value="Gayathri" />
+            <button class="btn btn-secondary" id="updateNames">Update names</button>
+        </section>
+
+        <div class="grid">
+            <div class="feature"><div class="emoji">📸</div><div><strong>Memory Maker</strong><div class="feature-text">Turn everyday moments into lifelong stories.</div></div></div>
+            <div class="feature"><div class="emoji">🎁</div><div><strong>Surprise Heart</strong><div class="feature-text">A little message from sister keeps the bond warm.</div></div></div>
+            <div class="feature"><div class="emoji">🛡️</div><div><strong>Always Protected</strong><div class="feature-text">A brother's support is a shield of trust.</div></div></div>
+            <div class="feature"><div class="emoji">✨</div><div><strong>Forever Close</strong><div class="feature-text">A sibling bond that shines brighter every day.</div></div></div>
+        </div>
+
+        <footer>Naresh's page includes interactive JavaScript, theme switching, and personal bond messages.</footer>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
